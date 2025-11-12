@@ -1,0 +1,32 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <title><%= title || 'Projekt02' %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <style>
+      body { font-family: Arial, Helvetica, sans-serif; margin: 2rem; }
+      header { margin-bottom: 1rem; }
+      footer { margin-top: 2rem; color: #666; font-size: 0.9rem; }
+      .message { padding: 0.5rem; border-bottom: 1px solid #eee; }
+    </style>
+  </head>
+  <body>
+    <header>
+      <h1><a href="/">Projekt02</a></h1>
+      <nav>
+        <a href="/">Strona główna</a> |
+        <a href="/about">O projekcie</a> |
+        <a href="/items/1">Przykładowy item (GET /items/:id)</a>
+      </nav>
+    </header>
+
+    <main>
+      <%- body %>
+    </main>
+
+    <footer>
+      <p>Projekt - wymagania: Express, GET /, przynajmniej 3 ścieżki, działa POST.</p>
+    </footer>
+  </body>
+</html>

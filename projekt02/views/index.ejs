@@ -1,0 +1,26 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Strona główna</title>
+  <link rel="stylesheet" href="/public/style.css">
+</head>
+<body>
+  <h1>Strona główna</h1>
+  <form action="/submit" method="post">
+    <input name="text" required placeholder="Twoja wiadomość"/>
+    <button type="submit">Wyślij</button>
+  </form>
+  <h2>Komentarze:</h2>
+  <ul>
+    <% if (messages.length === 0) { %>
+      <li><em>Brak wiadomości — dodaj pierwszą!</em></li>
+    <% } else { %>
+      <% messages.forEach(m => { %>
+        <li><strong>#<%= m.id %></strong> — <%= m.text %></li>
+      <% }) %>
+    <% } %>
+  </ul>
+  <p><a href="/about">O projekcie</a></p>
+</body>
+</html>
