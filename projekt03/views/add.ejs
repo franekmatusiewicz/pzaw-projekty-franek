@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dodaj nowe zadanie</title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h1>Menedżer Zadań</h1>
+      <nav>
+        <a href="/">Strona główna</a> |
+        <a href="/add">Dodaj nowe zadanie</a> |
+        <a href="/about">O projekcie</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="form-section">
+        <h2>Dodaj nowe zadanie</h2>
+        
+        <% if (typeof error !== 'undefined' && error) { %>
+          <div class="error-message"><%= error %></div>
+        <% } %>
+
+        <form method="POST" action="/add" class="task-form">
+          <div class="form-group">
+            <label for="title">Tytuł zadania *</label>
+            <input 
+              type="text" 
+              id="title" 
+              name="title" 
+              required 
+              placeholder="np. Przygotować prezentację"
+              maxlength="255"
+            >
+          </div>
+
+          <div class="form-group">
+            <label for="description">Opis (opcjonalnie)</label>
+            <textarea 
+              id="description" 
+              name="description" 
+              placeholder="Dodaj więcej szczegółów dotyczących tego zadania..."
+              rows="5"
+              maxlength="1000"
+            ></textarea>
+          </div>
+
+          <div class="form-group button-group">
+            <button type="submit" class="btn btn-primary">Dodaj zadanie</button>
+            <a href="/" class="btn btn-secondary">Anuluj</a>
+          </div>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; 2025 Aplikacja zarządzania zadaniami | Express + SQLite</p>
+    </footer>
+  </div>
+</body>
+</html>
