@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title><%= title %></title>
+  <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a href="/" class="brand">projekt04</a>
+      <nav class="nav">
+        <a href="/">Start</a>
+        <a href="/about">O projekcie</a>
+        <% if (currentUser) { %>
+          <a href="/tasks/new">Nowe zadanie</a>
+          <span class="welcome">
+            Zalogowano jako <strong><%= currentUser.login %></strong>
+            <% if (currentUser.role === 'admin') { %>(admin)<% } %>
+          </span>
+          <form action="/logout" method="POST" class="inline-form">
+            <button type="submit" class="link-button">Wyloguj</button>
+          </form>
+        <% } else { %>
+          <a href="/login">Logowanie</a>
+          <a href="/register">Rejestracja</a>
+        <% } %>
+      </nav>
+    </div>
+  </header>
+  <main class="container">

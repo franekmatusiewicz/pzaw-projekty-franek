@@ -1,0 +1,46 @@
+<%- include('partials/header', { title: 'projekt04 - lista zadan', currentUser }) %>
+
+<section class="hero">
+  <div>
+    <h1>Lista zadan zespolu</h1>
+    <p>Publiczna lista pokazuje wszystkie wpisy, ale dodawac i edytowac moga tylko zalogowani uzytkownicy.</p>
+  </div>
+  <% if (currentUser) { %>
+    <a href="/tasks/new" class="button">Dodaj zadanie</a>
+  <% } else { %>
+    <a href="/login" class="button">Zaloguj sie</a>
+  <% } %>
+</section>
+
+<section class="card">
+  <% if (tasks.length === 0) { %>
+    <p>Brak zadan w bazie.</p>
+  <% } else { %>
+    <div class="task-list">
+      <% tasks.forEach((task) => { %>
+        <article class="task-item <%= task.completed ? 'task-item-done' : '' %>">
+          <div class="task-main">
+            <div class="task-meta">
+              <span>Autor: <strong><%= task.owner_login %></strong></span>
+              <span>Status: <strong><%= task.completed ? 'wykonane' : 'do zrobienia' %></strong></span>
+            </div>
+            <h2><%= task.title %></h2>
+            <p><%= task.description || 'Brak opisu.' %></p>
+          </div>
+          <% if (currentUser && (currentUser.role === 'admin' || currentUser.id === task.user_id)) { %>
+            <div class="task-actions">
+              <a href="/tasks/<%= task.id %>/edit" class="button button-light">Edytuj</a>
+              <form action="/tasks/<%= task.id %>/delete" method="POST" onsubmit="return confirm('Usunac zadanie?');">
+                <button type="submit" class="button button-danger">Usun</button>
+              </form>
+            </div>
+          <% } %>
+        </article>
+      <% }) %>
+    </div>
+  <% } %>
+</section>
+
+  </main>
+</body>
+</html>

@@ -1,0 +1,27 @@
+<%- include('partials/header', { title: 'Rejestracja', currentUser }) %>
+
+<section class="card form-card">
+  <h1>Rejestracja</h1>
+  <p>Utworz konto, aby dodawac i edytowac swoje zadania.</p>
+
+  <% if (error) { %>
+    <p class="message error"><%= error %></p>
+  <% } %>
+
+  <form action="/register" method="POST" class="form">
+    <label for="login">Login</label>
+    <input id="login" name="login" type="text" value="<%= form.login %>" required minlength="3">
+
+    <label for="password">Haslo</label>
+    <input id="password" name="password" type="password" required minlength="6">
+
+    <label for="confirmPassword">Powtorz haslo</label>
+    <input id="confirmPassword" name="confirmPassword" type="password" required minlength="6">
+
+    <button type="submit" class="button">Utworz konto</button>
+  </form>
+</section>
+
+  </main>
+</body>
+</html>

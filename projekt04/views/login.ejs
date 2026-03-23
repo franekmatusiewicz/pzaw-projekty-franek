@@ -1,0 +1,24 @@
+<%- include('partials/header', { title: 'Logowanie', currentUser }) %>
+
+<section class="card form-card">
+  <h1>Logowanie</h1>
+  <p>Zaloguj sie przy pomocy loginu i hasla.</p>
+
+  <% if (error) { %>
+    <p class="message error"><%= error %></p>
+  <% } %>
+
+  <form action="/login" method="POST" class="form">
+    <label for="login">Login</label>
+    <input id="login" name="login" type="text" value="<%= form.login %>" required>
+
+    <label for="password">Haslo</label>
+    <input id="password" name="password" type="password" required>
+
+    <button type="submit" class="button">Zaloguj sie</button>
+  </form>
+</section>
+
+  </main>
+</body>
+</html>

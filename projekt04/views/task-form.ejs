@@ -1,0 +1,28 @@
+<%- include('partials/header', { title: pageTitle, currentUser }) %>
+
+<section class="card form-card">
+  <h1><%= pageTitle %></h1>
+
+  <% if (error) { %>
+    <p class="message error"><%= error %></p>
+  <% } %>
+
+  <form action="<%= action %>" method="POST" class="form">
+    <label for="title">Tytul</label>
+    <input id="title" name="title" type="text" value="<%= task.title %>" required>
+
+    <label for="description">Opis</label>
+    <textarea id="description" name="description" rows="5"><%= task.description %></textarea>
+
+    <label class="checkbox">
+      <input type="checkbox" name="completed" value="1" <%= task.completed ? 'checked' : '' %>>
+      Zadanie wykonane
+    </label>
+
+    <button type="submit" class="button"><%= submitLabel %></button>
+  </form>
+</section>
+
+  </main>
+</body>
+</html>
